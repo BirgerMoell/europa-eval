@@ -1,0 +1,46 @@
+{
+  "integrations": [
+    {
+      "id": "openeurollm",
+      "name": "OpenEuroLLM",
+      "role": "Open multilingual foundation models and project resources",
+      "status": "upstream",
+      "url": "https://github.com/OpenEuroLLM",
+      "license_note": "Individual repositories and artifacts retain their own licenses."
+    },
+    {
+      "id": "training-data-catalogue",
+      "name": "Training Data Catalogue",
+      "role": "Canonical 36-language scope and internal language/script variants",
+      "status": "scope source",
+      "url": "https://github.com/OpenEuroLLM/training-data-catalogue/blob/main/languages",
+      "license_note": "Language registry used under the upstream Apache-2.0 license."
+    },
+    {
+      "id": "oellm-eval",
+      "name": "oellm-eval",
+      "role": "OpenEuroLLM cluster scheduling and established harness task registry",
+      "status": "complementary",
+      "url": "https://github.com/OpenEuroLLM/oellm-eval",
+      "license_note": "Use upstream task protocols for protocol-matched comparisons."
+    },
+    {
+      "id": "euroeval",
+      "name": "EuroEval",
+      "role": "Broader European-language model evaluation and native task coverage",
+      "status": "complementary",
+      "url": "https://euroeval.com/",
+      "source_url": "https://github.com/EuroEval/EuroEval",
+      "license_note": "Framework and individual dataset terms remain authoritative."
+    },
+    {
+      "id": "svea-eval",
+      "name": "SVEA Eval",
+      "role": "Swedish-first predecessor and deep Swedish capability suite",
+      "status": "predecessor",
+      "url": "https://birgermoell.github.io/svea-eval/",
+      "source_url": "https://github.com/BirgerMoell/svea-eval",
+      "license_note": "Apache-2.0 code; original SVEA pilot data under CC0-1.0."
+    }
+  ]
+}

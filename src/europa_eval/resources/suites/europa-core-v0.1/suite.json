@@ -1,0 +1,470 @@
+{
+  "id": "europa-core",
+  "version": "0.1.0",
+  "name": "EUROPA Core 36-language public pilot",
+  "status": "translation-review-pilot",
+  "tagline": "One transparent capability protocol, measured across 36 European languages.",
+  "split": "dev",
+  "public_development_set": true,
+  "data_file": "dev.jsonl",
+  "languages": [
+    "bul",
+    "ces",
+    "dan",
+    "deu",
+    "ell",
+    "eng",
+    "est",
+    "fin",
+    "fra",
+    "gle",
+    "hrv",
+    "hun",
+    "ita",
+    "lav",
+    "lit",
+    "mlt",
+    "nld",
+    "pol",
+    "por",
+    "ron",
+    "slk",
+    "slv",
+    "spa",
+    "swe",
+    "cat",
+    "eus",
+    "glg",
+    "bos",
+    "kat",
+    "mkd",
+    "sqi",
+    "srp",
+    "tur",
+    "ukr",
+    "isl",
+    "nor"
+  ],
+  "language_count": 36,
+  "language_source": {
+    "title": "Prioritized Target Languages in OpenEuroLLM",
+    "url": "https://github.com/OpenEuroLLM/training-data-catalogue/blob/main/languages",
+    "accessed": "2026-09-03",
+    "license": "Apache-2.0"
+  },
+  "language_labels": {
+    "bul": "Bulgarian",
+    "ces": "Czech",
+    "dan": "Danish",
+    "deu": "German",
+    "ell": "Greek",
+    "eng": "English",
+    "est": "Estonian",
+    "fin": "Finnish",
+    "fra": "French",
+    "gle": "Irish",
+    "hrv": "Croatian",
+    "hun": "Hungarian",
+    "ita": "Italian",
+    "lav": "Latvian",
+    "lit": "Lithuanian",
+    "mlt": "Maltese",
+    "nld": "Dutch",
+    "pol": "Polish",
+    "por": "Portuguese",
+    "ron": "Romanian",
+    "slk": "Slovak",
+    "slv": "Slovene",
+    "spa": "Spanish",
+    "swe": "Swedish",
+    "cat": "Catalan",
+    "eus": "Basque",
+    "glg": "Galician",
+    "bos": "Bosnian",
+    "kat": "Georgian",
+    "mkd": "Macedonian",
+    "sqi": "Albanian",
+    "srp": "Serbian",
+    "tur": "Turkish",
+    "ukr": "Ukrainian",
+    "isl": "Icelandic",
+    "nor": "Norwegian"
+  },
+  "language_autonyms": {
+    "bul": "български",
+    "ces": "čeština",
+    "dan": "dansk",
+    "deu": "Deutsch",
+    "ell": "ελληνικά",
+    "eng": "English",
+    "est": "eesti",
+    "fin": "suomi",
+    "fra": "français",
+    "gle": "Gaeilge",
+    "hrv": "hrvatski",
+    "hun": "magyar",
+    "ita": "italiano",
+    "lav": "latviešu",
+    "lit": "lietuvių",
+    "mlt": "Malti",
+    "nld": "Nederlands",
+    "pol": "polski",
+    "por": "português",
+    "ron": "română",
+    "slk": "slovenčina",
+    "slv": "slovenščina",
+    "spa": "español",
+    "swe": "svenska",
+    "cat": "català",
+    "eus": "euskara",
+    "glg": "galego",
+    "bos": "bosanski",
+    "kat": "ქართული",
+    "mkd": "македонски",
+    "sqi": "shqip",
+    "srp": "српски",
+    "tur": "Türkçe",
+    "ukr": "українська",
+    "isl": "íslenska",
+    "nor": "norsk"
+  },
+  "language_groups": {
+    "bul": "eu_official",
+    "ces": "eu_official",
+    "dan": "eu_official",
+    "deu": "eu_official",
+    "ell": "eu_official",
+    "eng": "eu_official",
+    "est": "eu_official",
+    "fin": "eu_official",
+    "fra": "eu_official",
+    "gle": "eu_official",
+    "hrv": "eu_official",
+    "hun": "eu_official",
+    "ita": "eu_official",
+    "lav": "eu_official",
+    "lit": "eu_official",
+    "mlt": "eu_official",
+    "nld": "eu_official",
+    "pol": "eu_official",
+    "por": "eu_official",
+    "ron": "eu_official",
+    "slk": "eu_official",
+    "slv": "eu_official",
+    "spa": "eu_official",
+    "swe": "eu_official",
+    "cat": "co_official",
+    "eus": "co_official",
+    "glg": "co_official",
+    "bos": "candidate",
+    "kat": "candidate",
+    "mkd": "candidate",
+    "sqi": "candidate",
+    "srp": "candidate",
+    "tur": "candidate",
+    "ukr": "candidate",
+    "isl": "associated",
+    "nor": "associated"
+  },
+  "language_scripts": {
+    "bul": [
+      "Cyrl"
+    ],
+    "ces": [
+      "Latn"
+    ],
+    "dan": [
+      "Latn"
+    ],
+    "deu": [
+      "Latn"
+    ],
+    "ell": [
+      "Grek"
+    ],
+    "eng": [
+      "Latn"
+    ],
+    "est": [
+      "Latn"
+    ],
+    "fin": [
+      "Latn"
+    ],
+    "fra": [
+      "Latn"
+    ],
+    "gle": [
+      "Latn"
+    ],
+    "hrv": [
+      "Latn"
+    ],
+    "hun": [
+      "Latn"
+    ],
+    "ita": [
+      "Latn"
+    ],
+    "lav": [
+      "Latn"
+    ],
+    "lit": [
+      "Latn"
+    ],
+    "mlt": [
+      "Latn"
+    ],
+    "nld": [
+      "Latn"
+    ],
+    "pol": [
+      "Latn"
+    ],
+    "por": [
+      "Latn"
+    ],
+    "ron": [
+      "Latn"
+    ],
+    "slk": [
+      "Latn"
+    ],
+    "slv": [
+      "Latn"
+    ],
+    "spa": [
+      "Latn"
+    ],
+    "swe": [
+      "Latn"
+    ],
+    "cat": [
+      "Latn"
+    ],
+    "eus": [
+      "Latn"
+    ],
+    "glg": [
+      "Latn"
+    ],
+    "bos": [
+      "Latn"
+    ],
+    "kat": [
+      "Geor"
+    ],
+    "mkd": [
+      "Cyrl"
+    ],
+    "sqi": [
+      "Latn"
+    ],
+    "srp": [
+      "Cyrl",
+      "Latn"
+    ],
+    "tur": [
+      "Latn"
+    ],
+    "ukr": [
+      "Cyrl"
+    ],
+    "isl": [
+      "Latn"
+    ],
+    "nor": [
+      "Latn"
+    ]
+  },
+  "language_variants": {
+    "bul": [
+      "bul_Cyrl"
+    ],
+    "ces": [
+      "ces_Latn"
+    ],
+    "dan": [
+      "dan_Latn"
+    ],
+    "deu": [
+      "deu_Latn"
+    ],
+    "ell": [
+      "ell_Grek"
+    ],
+    "eng": [
+      "eng_Latn"
+    ],
+    "est": [
+      "est_Latn",
+      "ekk_Latn"
+    ],
+    "fin": [
+      "fin_Latn"
+    ],
+    "fra": [
+      "fra_Latn"
+    ],
+    "gle": [
+      "gle_Latn"
+    ],
+    "hrv": [
+      "hrv_Latn"
+    ],
+    "hun": [
+      "hun_Latn"
+    ],
+    "ita": [
+      "ita_Latn"
+    ],
+    "lav": [
+      "lav_Latn",
+      "ltg_Latn",
+      "lvs_Latn"
+    ],
+    "lit": [
+      "lit_Latn"
+    ],
+    "mlt": [
+      "mlt_Latn"
+    ],
+    "nld": [
+      "nld_Latn"
+    ],
+    "pol": [
+      "pol_Latn"
+    ],
+    "por": [
+      "por_Latn"
+    ],
+    "ron": [
+      "ron_Latn"
+    ],
+    "slk": [
+      "slk_Latn"
+    ],
+    "slv": [
+      "slv_Latn"
+    ],
+    "spa": [
+      "spa_Latn"
+    ],
+    "swe": [
+      "swe_Latn"
+    ],
+    "cat": [
+      "cat_Latn"
+    ],
+    "eus": [
+      "eus_Latn"
+    ],
+    "glg": [
+      "glg_Latn"
+    ],
+    "bos": [
+      "bos_Latn"
+    ],
+    "kat": [
+      "kat_Geor"
+    ],
+    "mkd": [
+      "mkd_Cyrl"
+    ],
+    "sqi": [
+      "sqi_Latn",
+      "als_Latn"
+    ],
+    "srp": [
+      "srp_Cyrl",
+      "srp_Latn"
+    ],
+    "tur": [
+      "tur_Latn"
+    ],
+    "ukr": [
+      "ukr_Cyrl"
+    ],
+    "isl": [
+      "isl_Latn"
+    ],
+    "nor": [
+      "nor_Latn",
+      "nno_Latn",
+      "nob_Latn"
+    ]
+  },
+  "template_ids": [
+    "reading",
+    "numeric",
+    "ground-supported",
+    "ground-insufficient",
+    "structured",
+    "strict-format",
+    "tool-recovery",
+    "surface-metric",
+    "summarization",
+    "translation",
+    "safety",
+    "revision-tracking"
+  ],
+  "template_count": 12,
+  "items_per_language": 12,
+  "review_counts": {
+    "machine_translated": 420,
+    "source_native": 12
+  },
+  "domains": [
+    "language_understanding",
+    "quantitative_reasoning",
+    "grounding_safety",
+    "digital_agency",
+    "practical_communication"
+  ],
+  "domain_labels": {
+    "language_understanding": "Language understanding",
+    "quantitative_reasoning": "Quantitative reasoning",
+    "grounding_safety": "Grounding & safety",
+    "digital_agency": "Digital agency",
+    "practical_communication": "Practical communication"
+  },
+  "domain_descriptions": {
+    "language_understanding": "Reading, translation fidelity and exact instruction following.",
+    "quantitative_reasoning": "Arithmetic and explicitly defined text-surface calculations.",
+    "grounding_safety": "Evidence use, calibrated abstention and safe refusal.",
+    "digital_agency": "Structured output, tool recovery and revision tracking.",
+    "practical_communication": "Faithful, concise communication in the target language."
+  },
+  "task_types": [
+    "multiple_choice",
+    "numeric",
+    "structured_extraction",
+    "constrained_generation",
+    "grounded_qa",
+    "open_generation"
+  ],
+  "task_type_labels": {
+    "multiple_choice": "Multiple choice",
+    "numeric": "Numeric",
+    "structured_extraction": "Structured extraction",
+    "constrained_generation": "Constrained generation",
+    "grounded_qa": "Grounded QA",
+    "open_generation": "Open generation"
+  },
+  "methodology": [
+    "Use the same 12 semantic templates in every language so coverage is visible and comparable.",
+    "Score exact, numeric and JSON tasks deterministically; keep rubric tasks unscored unless a named judge is configured.",
+    "Report language, domain and task profiles alongside coverage, malformed-output rate and uncertainty intervals.",
+    "Record the checkpoint revision, backend, language-aware system prompt, decoding settings and judge provenance.",
+    "Treat reasoning-on and reasoning-off runs as separate protocols; never blend them into one checkpoint score.",
+    "Promote machine-translated packs only after native review, recorded per item in the public data."
+  ],
+  "limitations": [
+    "Version 0.1 is a public translation-review pilot for harness validation, not a definitive language leaderboard.",
+    "Thirty-five packs were machine translated from an authored English source and require native-speaker review.",
+    "Twelve items per language are intentionally lightweight and cannot represent every register, dialect or domain.",
+    "Open-generation scores depend on the selected judge and should be calibrated against multilingual human ratings.",
+    "The surface metric is a protocol-following task, not a language-independent readability claim.",
+    "The suite is text-only and the public development answers may appear in future training data."
+  ]
+}

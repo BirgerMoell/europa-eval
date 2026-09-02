@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="EUROPA Eval measures language-model capabilities with one transparent protocol across the 36 languages prioritized by OpenEuroLLM.">
+    <meta name="theme-color" content="#092750">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="EUROPA Eval">
+    <meta property="og:title" content="EUROPA Eval — 36 languages, one capability protocol">
+    <meta property="og:description" content="An open, inspectable multilingual evaluation for API and local language models.">
+    <meta property="og:url" content="https://birgermoell.github.io/europa-eval/">
+    <meta property="og:image" content="https://birgermoell.github.io/europa-eval/og.png">
+    <meta property="og:image:alt" content="EUROPA Eval: 36 European languages measured with one capability protocol">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EUROPA Eval — 36 languages, one capability protocol">
+    <meta name="twitter:description" content="An open, inspectable multilingual evaluation for API and local language models.">
+    <meta name="twitter:image" content="https://birgermoell.github.io/europa-eval/og.png">
+    <link rel="canonical" href="https://birgermoell.github.io/europa-eval/">
+    <link rel="stylesheet" href="styles.css?v=20260903-1">
+    <title>EUROPA Eval — 36 languages, one capability protocol</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="EUROPA Eval home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span>EUROPA <b>EVAL</b></span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#languages">Languages</a>
+        <a href="#map">Capabilities</a>
+        <a href="#method">Method</a>
+        <a href="#run">Run it</a>
+        <a href="#results">Results</a>
+      </nav>
+      <a class="nav-cta" href="https://github.com/BirgerMoell/europa-eval">GitHub <span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> OPENEUROLLM · 36-LANGUAGE EVALUATION</p>
+          <h1>36 languages.<br><em>One honest protocol.</em></h1>
+          <p class="hero-lead">EUROPA Eval asks the same practical questions in every OpenEuroLLM language—then keeps language, task, format failures and judge evidence visible.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#run">Run the pilot</a>
+            <a class="button quiet" href="https://github.com/BirgerMoell/europa-eval">Explore the repository</a>
+          </div>
+          <p class="pilot-note"><strong>v0.1 translation-review pilot.</strong> The harness is production-shaped; 35 generated language packs are clearly marked for native review before leaderboard use.</p>
+        </div>
+        <div class="atlas" aria-label="EUROPA multilingual capability atlas illustration">
+          <div class="atlas-topline"><span>CAPABILITY ATLAS</span><span>36 · v0.1</span></div>
+          <div class="atlas-grid" aria-hidden="true">
+            <span class="cell a1"></span><span class="cell a2"></span><span class="cell a3"></span><span class="cell a4"></span>
+            <span class="cell a5"></span><span class="cell a6"></span><span class="cell a7"></span><span class="cell a8"></span>
+            <span class="cell a9"></span><span class="cell a10"></span><span class="cell a11"></span><span class="cell a12"></span>
+            <span class="cell a13"></span><span class="cell a14"></span><span class="cell a15"></span><span class="cell a16"></span>
+          </div>
+          <div class="atlas-axis"><span>LANGUAGE</span><span>CAPABILITY →</span></div>
+          <div class="atlas-caption">
+            <strong>Same task.<br>Every language.</strong>
+            <p>Averages are useful. Language-level failures are the finding.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="metric-strip" aria-label="Pilot suite statistics">
+        <div><strong data-stat="items">432</strong><span>parallel pilot items</span></div>
+        <div><strong data-stat="languages">36</strong><span>target languages</span></div>
+        <div><strong data-stat="templates">12</strong><span>tasks per language</span></div>
+        <div><strong data-stat="domains">5</strong><span>capability domains</span></div>
+      </section>
+
+      <section class="section language-section" id="languages">
+        <div class="section-heading">
+          <p class="kicker">01 / LANGUAGES</p>
+          <div>
+            <h2>The whole target set.<br>Nothing hidden in “multilingual.”</h2>
+            <p>The registry follows OpenEuroLLM’s current 36 macro-languages and preserves its internal language/script variants. Every language receives exactly the same template coverage.</p>
+          </div>
+        </div>
+        <div class="review-banner"><strong>Review status is data.</strong><span>English is the authored source pack. Every generated translation carries its model, decoding protocol and review state until a native speaker approves it.</span></div>
+        <div class="language-grid" id="language-grid" aria-live="polite"></div>
+        <p class="source-note">Canonical scope: <a href="https://github.com/OpenEuroLLM/training-data-catalogue/blob/main/languages">OpenEuroLLM training-data catalogue ↗</a></p>
+      </section>
+
+      <section class="section map-section" id="map">
+        <div class="section-heading">
+          <p class="kicker">02 / CAPABILITIES</p>
+          <div>
+            <h2>A score should leave a shape.</h2>
+            <p>A model can sound fluent in one language and still miss dates, invent an absent fact or break a JSON contract in another. EUROPA keeps those failures separate.</p>
+          </div>
+        </div>
+        <div class="domain-grid" id="domain-grid" aria-live="polite">
+          <article class="domain-card loading"><span>01</span><h3>Loading capability map…</h3></article>
+        </div>
+        <div class="task-band"><p>Six task forms</p><div id="task-types"></div></div>
+      </section>
+
+      <section class="section method-section" id="method">
+        <div class="section-heading inverse">
+          <p class="kicker">03 / METHOD</p>
+          <div>
+            <h2>Parallel by design.<br>Inspectable by default.</h2>
+            <p>EUROPA uses deterministic scoring wherever possible and makes every result carry its language, protocol and judge provenance.</p>
+          </div>
+        </div>
+        <div class="method-layout">
+          <ol class="method-list" id="method-list">
+            <li><span>01</span><div><strong>Hold templates constant</strong><p>Twelve semantic tasks repeat across all 36 language packs.</p></div></li>
+            <li><span>02</span><div><strong>Profile, don’t flatten</strong><p>Language, domain, task, coverage, weakest slice and uncertainty stay visible.</p></div></li>
+            <li><span>03</span><div><strong>Prefer deterministic checks</strong><p>Exact, numeric, JSON and format contracts run locally without a judge.</p></div></li>
+            <li><span>04</span><div><strong>Name the judge</strong><p>Open answers remain unscored until a pinned judge is configured.</p></div></li>
+            <li><span>05</span><div><strong>Separate protocols</strong><p>Reasoning on and off are distinct runs; model and judge revisions travel with every answer.</p></div></li>
+          </ol>
+          <aside class="contrast-card">
+            <p class="small-label">PARALLEL TEMPLATE</p>
+            <div class="pair-row"><span class="pair-icon base">BG</span><div><strong>Български</strong><p>Exactly 12 capability templates.</p></div><b class="score-dot good">12</b></div>
+            <div class="pair-link"><span></span><i>same semantics</i><span></span></div>
+            <div class="pair-row"><span class="pair-icon pressure">KA</span><div><strong>ქართული</strong><p>Exactly 12 capability templates.</p></div><b class="score-dot good">12</b></div>
+            <div class="gap-line"><span>TEMPLATE COVERAGE</span><strong>36 / 36</strong></div>
+            <p class="card-note">Translation is never invisible preprocessing: pack provenance and native-review state are published with the item.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section run-section" id="run">
+        <div class="section-heading">
+          <p class="kicker">04 / RUN</p>
+          <div>
+            <h2>One suite. Your endpoint.</h2>
+            <p>The dependency-free core talks to hosted APIs and Ollama’s native chat endpoint. Transformers is an optional direct backend. Filter one language for diagnostics or run all 432 items for comparable evidence.</p>
+          </div>
+        </div>
+        <div class="runner">
+          <div class="runner-tabs" role="tablist" aria-label="Run examples">
+            <button role="tab" aria-selected="true" data-tab="api">Hosted API</button>
+            <button role="tab" aria-selected="false" data-tab="endpoint">Ollama / local</button>
+            <button role="tab" aria-selected="false" data-tab="hf">Transformers</button>
+          </div>
+          <div class="code-window">
+            <div class="window-bar"><span></span><span></span><span></span><button id="copy-command" type="button">Copy</button></div>
+            <pre id="command-api" class="command active"><code><span class="dim">export</span> OPENAI_API_KEY=<span class="yellow">"…"</span>
+europa run \
+  --backend openai-compatible \
+  --base-url https://api.openai.com/v1 \
+  --model YOUR_MODEL_ID \
+  --revision PINNED_VERSION \
+  --judge-backend openai-compatible \
+  --judge-model YOUR_JUDGE_ID \
+  --output results/runs/model-api.json</code></pre>
+            <pre id="command-endpoint" class="command"><code>europa run \
+  --backend ollama \
+  --model gemma4:31b \
+  --revision OLLAMA_MODEL_DIGEST \
+  --language swe \
+  --diagnostic \
+  --output results/runs/gemma-swe.json</code></pre>
+            <pre id="command-hf" class="command"><code><span class="dim">python3 -m pip install -e</span> <span class="yellow">'.[local]'</span>
+europa run \
+  --backend huggingface \
+  --model /path/to/checkpoint \
+  --revision CHECKPOINT_SHA \
+  --output results/runs/model-hf.json</code></pre>
+          </div>
+          <div class="runner-foot"><span><b>↻</b> Resumable after every item</span><span><b>⌁</b> API keys never enter artifacts</span><span><b>◇</b> Raw answers retained</span></div>
+        </div>
+      </section>
+
+      <section class="section results-section" id="results">
+        <div class="section-heading">
+          <p class="kicker">05 / EVIDENCE</p>
+          <div>
+            <h2>Results, with their caveats attached.</h2>
+            <p>The page accepts only complete, non-diagnostic runs. Reasoning-on and reasoning-off remain separate protocols. Open any run to filter by language and inspect every question, final answer, scoring decision and named judge rationale.</p>
+          </div>
+        </div>
+        <div id="results-view" class="results-empty" aria-live="polite">
+          <span class="empty-glyph" aria-hidden="true">∅</span>
+          <div><h3>No reviewed full-suite runs yet.</h3><p>The harness is ready. The first contribution should be a reproducible 432-item baseline with pinned target and judge revisions.</p></div>
+          <a class="button quiet" href="https://github.com/BirgerMoell/europa-eval/blob/main/CONTRIBUTING.md">Submit a run</a>
+        </div>
+        <div id="deep-dive" class="deep-dive" aria-live="polite" hidden>
+          <div class="deep-heading"><div><p class="small-label">ANSWER EXPLORER</p><h3>From aggregate score to actual evidence.</h3></div><p>Private chain-of-thought is not published. The page shows final answers, deterministic scorer evidence and the concise rationale returned by the named judge.</p></div>
+          <div class="deep-controls">
+            <label>Model<select id="detail-model" aria-label="Select model"></select></label>
+            <label>Language<select id="detail-language" aria-label="Filter by language"><option value="all">All languages</option></select></label>
+            <label>Domain<select id="detail-domain" aria-label="Filter by domain"><option value="all">All domains</option></select></label>
+            <label>View<select id="detail-filter" aria-label="Filter answers"><option value="all">All answers</option><option value="attention">Needs attention</option><option value="judged">LLM-judged</option><option value="deterministic">Deterministic</option></select></label>
+          </div>
+          <div class="deep-protocol" id="deep-protocol"></div>
+          <div class="deep-caveats" id="deep-caveats"></div>
+          <div class="deep-layout"><div class="item-list" id="detail-items" role="list" aria-label="Evaluation items"></div><article class="answer-detail" id="detail-answer"></article></div>
+        </div>
+      </section>
+
+      <section class="section ecosystem-section" id="ecosystem">
+        <div class="section-heading"><p class="kicker">06 / ECOSYSTEM</p><div><h2>Built with the ecosystem.</h2><p>EUROPA adds a small, inspectable cross-language capability layer. It complements deeper native datasets and OpenEuroLLM’s established evaluation infrastructure.</p></div></div>
+        <div class="integration-list" id="integration-list"><a href="https://github.com/OpenEuroLLM"><span>01</span><strong>OpenEuroLLM</strong><p>Open multilingual foundation models for Europe</p><i>↗</i></a></div>
+      </section>
+
+      <section class="call-to-action">
+        <p class="kicker">35 LANGUAGE PACKS NEED NATIVE REVIEW</p>
+        <h2>Help make European model evaluation harder to fool—and easier to trust.</h2>
+        <div><a class="button light" href="https://github.com/BirgerMoell/europa-eval/blob/main/CONTRIBUTING.md">Review a language pack</a><a href="https://github.com/BirgerMoell/europa-eval/blob/main/docs/METHODOLOGY.md" class="text-link">Read the methodology <span aria-hidden="true">→</span></a></div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>EUROPA <b>EVAL</b></span></a>
+      <p>Open code under Apache-2.0 · Original pilot data under CC0-1.0</p>
+      <div><a href="https://github.com/BirgerMoell/europa-eval">GitHub</a><a href="https://github.com/BirgerMoell/europa-eval/blob/main/docs/METHODOLOGY.md">Methodology</a><a href="https://github.com/BirgerMoell/europa-eval/blob/main/docs/SOURCES.md">Sources</a></div>
+    </footer>
+    <script src="data/site-data.js?v=20260903-1"></script>
+    <script src="app.js?v=20260903-1" defer></script>
+  </body>
+</html>
