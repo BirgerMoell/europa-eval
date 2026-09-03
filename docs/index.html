@@ -17,7 +17,7 @@
     <meta name="twitter:description" content="An open, inspectable multilingual evaluation for API and local language models.">
     <meta name="twitter:image" content="https://birgermoell.github.io/europa-eval/og.png">
     <link rel="canonical" href="https://birgermoell.github.io/europa-eval/">
-    <link rel="stylesheet" href="styles.css?v=20260903-1">
+    <link rel="stylesheet" href="styles.css?v=20260903-2">
     <title>EUROPA Eval — 36 languages, one capability protocol</title>
   </head>
   <body>
@@ -190,6 +190,7 @@ europa run \
             <label>Domain<select id="detail-domain" aria-label="Filter by domain"><option value="all">All domains</option></select></label>
             <label>View<select id="detail-filter" aria-label="Filter answers"><option value="all">All answers</option><option value="attention">Needs attention</option><option value="judged">LLM-judged</option><option value="deterministic">Deterministic</option></select></label>
           </div>
+          <div class="deep-language-summary" id="deep-language-summary"></div>
           <div class="deep-protocol" id="deep-protocol"></div>
           <div class="deep-caveats" id="deep-caveats"></div>
           <div class="deep-layout"><div class="item-list" id="detail-items" role="list" aria-label="Evaluation items"></div><article class="answer-detail" id="detail-answer"></article></div>
@@ -214,6 +215,6 @@ europa run \
       <div><a href="https://github.com/BirgerMoell/europa-eval">GitHub</a><a href="https://github.com/BirgerMoell/europa-eval/blob/main/docs/METHODOLOGY.md">Methodology</a><a href="https://github.com/BirgerMoell/europa-eval/blob/main/docs/SOURCES.md">Sources</a></div>
     </footer>
     <script src="data/site-data.js?v=20260903-1"></script>
-    <script src="app.js?v=20260903-1" defer></script>
+    <script src="app.js?v=20260903-2" defer></script>
   </body>
 </html>

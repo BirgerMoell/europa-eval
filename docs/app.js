@@ -33,11 +33,12 @@ function applyDeepLink() {
   const params = new URLSearchParams(window.location.search);
   const runId = params.get("run");
   const itemId = params.get("item");
+  const language = params.get("language");
   const runIndex = state.results.findIndex(run => run.run_id === runId);
   if (runIndex >= 0) {
     state.detail.runIndex = runIndex;
     state.detail.itemId = itemId || null;
-    state.detail.language = "all";
+    state.detail.language = state.catalog?.suite?.languages?.some(candidate => candidate.code === language) ? language : "all";
     state.detail.domain = "all";
     state.detail.filter = "all";
   }
@@ -48,6 +49,7 @@ function syncDeepLink(runId, itemId) {
   url.search = "";
   url.searchParams.set("run", runId);
   url.searchParams.set("item", itemId);
+  if (state.detail.language !== "all") url.searchParams.set("language", state.detail.language);
   url.hash = "deep-dive";
   window.history.replaceState(null, "", url);
 }
@@ -111,6 +113,14 @@ function renderResults() {
         <b>${percent(domain.score)}</b>
       </div>
     `).join("");
+    const languageScores = new Map((run.summary.languages || []).map(language => [language.id, language]));
+    const languages = (state.catalog?.suite?.languages || []).map(language => {
+      const result = languageScores.get(language.code);
+      return `<button class="language-score-row" type="button" data-run-language="${escapeAttribute(language.code)}" data-run-index="${index}" title="Inspect ${escapeAttribute(language.name)} answers">
+        <span><b>${escapeHtml(language.autonym)}</b><small>${escapeHtml(language.code.toUpperCase())}</small></span>
+        <strong>${percent(result?.score)}</strong>
+      </button>`;
+    }).join("");
     return `<article class="result-card">
       <header><h3>${escapeHtml(shortModel(run.model.id))}</h3><span>${escapeHtml(shortRevision(run.model.revision))}</span></header>
       <div class="protocol-line"><span>TARGET PROTOCOL</span><strong>${escapeHtml(reasoningLabel(run))}</strong><small>${escapeHtml(reasoningAllowance(run))}</small></div>
@@ -121,11 +131,44 @@ function renderResults() {
       </div>
       ${malformed ? `<div class="format-alert"><strong>${malformed} malformed</strong><span>responses violated a declared output format</span></div>` : ""}
       ${promptEchoes || repeatedSpans ? `<div class="format-alert"><strong>${promptEchoes + repeatedSpans} output anomalies</strong><span>${promptEchoes} prompt echoes · ${repeatedSpans} repeated spans</span></div>` : ""}
-      <div class="result-domains">${domains}</div>
+      <div class="result-score-toggle" role="group" aria-label="Score breakdown for ${escapeAttribute(shortModel(run.model.id))}">
+        <button type="button" data-score-view="domains" aria-pressed="true">Domains</button>
+        <button type="button" data-score-view="languages" aria-pressed="false">Languages <span>${state.catalog?.suite?.languages?.length || 0}</span></button>
+      </div>
+      <div class="result-score-panel result-domains" data-score-panel="domains">${domains}</div>
+      <div class="result-score-panel result-languages" data-score-panel="languages" hidden>${languages}</div>
       <button class="inspect-button" type="button" data-run-index="${index}">Inspect ${run.items?.length || 0} answers <span aria-hidden="true">→</span></button>
     </article>`;
   }).join("");
   setupDeepDive();
+  setupResultCardToggles();
+}
+
+function setupResultCardToggles() {
+  document.querySelectorAll(".result-card").forEach(card => {
+    card.querySelectorAll("[data-score-view]").forEach(button => {
+      button.addEventListener("click", () => {
+        const view = button.dataset.scoreView;
+        card.querySelectorAll("[data-score-view]").forEach(candidate => candidate.setAttribute("aria-pressed", String(candidate === button)));
+        card.querySelectorAll("[data-score-panel]").forEach(panel => { panel.hidden = panel.dataset.scorePanel !== view; });
+      });
+    });
+  });
+  document.querySelectorAll("[data-run-language]").forEach(button => {
+    button.addEventListener("click", () => {
+      state.detail.runIndex = Number(button.dataset.runIndex);
+      state.detail.language = button.dataset.runLanguage;
+      state.detail.domain = "all";
+      state.detail.filter = "all";
+      state.detail.itemId = null;
+      document.querySelector("#detail-model").value = String(state.detail.runIndex);
+      document.querySelector("#detail-language").value = state.detail.language;
+      document.querySelector("#detail-domain").value = "all";
+      document.querySelector("#detail-filter").value = "all";
+      renderDeepDive();
+      document.querySelector("#deep-dive").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
 }
 
 function setupDeepDive() {
@@ -165,7 +208,7 @@ function setupDeepDive() {
     state.detail.itemId = null;
     renderDeepDive();
   };
-  document.querySelectorAll("[data-run-index]").forEach(button => {
+  document.querySelectorAll(".inspect-button[data-run-index]").forEach(button => {
     button.addEventListener("click", () => {
       state.detail.runIndex = Number(button.dataset.runIndex);
       state.detail.domain = "all";
@@ -181,6 +224,9 @@ function setupDeepDive() {
     });
   });
   renderDeepDive();
+  if (window.location.hash === "#deep-dive") {
+    window.requestAnimationFrame(() => deepDive.scrollIntoView({ behavior: "auto", block: "start" }));
+  }
 }
 
 function renderDeepDive() {
@@ -199,6 +245,7 @@ function renderDeepDive() {
       : backendSettings.resolved_device
         ? `Transformers · ${String(backendSettings.resolved_device).toUpperCase()}`
         : "Provider default";
+  renderLanguageSummary(run);
   document.querySelector("#deep-protocol").innerHTML = `
     <div><span>TARGET MODEL</span><strong>${escapeHtml(run.model.id)}</strong><code title="${escapeAttribute(run.model.revision || "")}">${escapeHtml(shortRevision(run.model.revision))}</code></div>
     <div><span>LLM JUDGE</span><strong>${escapeHtml(judge?.id || "Not configured")}</strong><code title="${escapeAttribute(judge?.revision || "")}">${escapeHtml(judge?.revision ? shortRevision(judge.revision) : "—")}</code></div>
@@ -249,6 +296,22 @@ function renderDeepDive() {
   const selected = entries.find(entry => entry.item.id === state.detail.itemId) || entries[0];
   syncDeepLink(run.run_id, selected.item.id);
   renderAnswer(run, selected);
+}
+
+function renderLanguageSummary(run) {
+  const summary = document.querySelector("#deep-language-summary");
+  const languageProfile = run.summary?.language_profile || {};
+  if (state.detail.language === "all") {
+    summary.innerHTML = `<div><span>LANGUAGE CAPABILITY</span><strong>${percent(languageProfile.macro_language_score)}</strong><small>macro average across ${(run.summary?.languages || []).length} languages</small></div>
+      <div><span>WEAKEST LANGUAGE</span><strong>${percent(languageProfile.minimum_language_score)}</strong><small>select a language to inspect its evidence</small></div>`;
+    return;
+  }
+  const catalogLanguage = state.catalog?.suite?.languages?.find(candidate => candidate.code === state.detail.language);
+  const languageResult = (run.summary?.languages || []).find(candidate => candidate.id === state.detail.language);
+  const interval = Array.isArray(languageResult?.ci95) ? `${percent(languageResult.ci95[0])}–${percent(languageResult.ci95[1])}` : "not available";
+  summary.innerHTML = `<div class="selected-language-name"><span>SELECTED LANGUAGE</span><strong>${escapeHtml(catalogLanguage?.autonym || state.detail.language.toUpperCase())}</strong><small>${escapeHtml(catalogLanguage?.name || state.detail.language.toUpperCase())} · ${escapeHtml(state.detail.language.toUpperCase())}</small></div>
+    <div><span>LANGUAGE SCORE</span><strong>${percent(languageResult?.score)}</strong><small>${languageResult?.n || 0} scored items · 95% CI ${escapeHtml(interval)}</small></div>
+    <div><span>PASS RATE</span><strong>${percent(languageResult?.pass_rate)}</strong><small>items meeting their declared threshold</small></div>`;
 }
 
 function renderAnswer(run, entry) {
