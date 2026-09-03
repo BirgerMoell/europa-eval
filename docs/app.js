@@ -7,6 +7,15 @@ const state = {
 
 const percent = value => value == null ? "—" : `${(Number(value) * 100).toFixed(1)}%`;
 const shortModel = value => String(value || "").split("/").at(-1);
+const LANGUAGE_FLAGS = Object.freeze({
+  bul: "🇧🇬", ces: "🇨🇿", dan: "🇩🇰", deu: "🇩🇪", ell: "🇬🇷", eng: "🇬🇧",
+  est: "🇪🇪", fin: "🇫🇮", fra: "🇫🇷", gle: "🇮🇪", hrv: "🇭🇷", hun: "🇭🇺",
+  ita: "🇮🇹", lav: "🇱🇻", lit: "🇱🇹", mlt: "🇲🇹", nld: "🇳🇱", pol: "🇵🇱",
+  por: "🇵🇹", ron: "🇷🇴", slk: "🇸🇰", slv: "🇸🇮", spa: "🇪🇸", swe: "🇸🇪",
+  cat: "🇦🇩", eus: "🇪🇸", glg: "🇪🇸", bos: "🇧🇦", kat: "🇬🇪", mkd: "🇲🇰",
+  sqi: "🇦🇱", srp: "🇷🇸", tur: "🇹🇷", ukr: "🇺🇦", isl: "🇮🇸", nor: "🇳🇴",
+});
+const languageFlag = code => LANGUAGE_FLAGS[code] || "🌐";
 
 async function loadData() {
   if (state.catalog) {
@@ -63,7 +72,7 @@ function renderCatalog() {
 
   document.querySelector("#language-grid").innerHTML = suite.languages.map(language => `
     <article class="language-card" lang="${escapeAttribute(language.bcp47 || language.code)}">
-      <header><span>${escapeHtml(language.code)}</span><span>${escapeHtml(language.scripts.join(" + "))}</span></header>
+      <header><span><i class="language-flag" aria-hidden="true">${languageFlag(language.code)}</i>${escapeHtml(language.code)}</span><span>${escapeHtml(language.scripts.join(" + "))}</span></header>
       <h3>${escapeHtml(language.autonym)}</h3>
       <p>${escapeHtml(language.name)}</p>
       <small>${language.item_count} items · ${escapeHtml(reviewLabel(language.review_states))}</small>
@@ -117,7 +126,7 @@ function renderResults() {
     const languages = (state.catalog?.suite?.languages || []).map(language => {
       const result = languageScores.get(language.code);
       return `<button class="language-score-row" type="button" data-run-language="${escapeAttribute(language.code)}" data-run-index="${index}" title="Inspect ${escapeAttribute(language.name)} answers">
-        <span><b>${escapeHtml(language.autonym)}</b><small>${escapeHtml(language.code.toUpperCase())}</small></span>
+        <span><i class="language-flag" aria-hidden="true">${languageFlag(language.code)}</i><b>${escapeHtml(language.autonym)}</b><small>${escapeHtml(language.code.toUpperCase())}</small></span>
         <strong>${percent(result?.score)}</strong>
       </button>`;
     }).join("");
@@ -183,7 +192,7 @@ function setupDeepDive() {
   domainSelect.innerHTML = `<option value="all">All domains</option>${state.catalog.suite.domains.map(domain =>
     `<option value="${escapeAttribute(domain.id)}">${escapeHtml(domain.name)}</option>`).join("")}`;
   languageSelect.innerHTML = `<option value="all">All languages</option>${state.catalog.suite.languages.map(language =>
-    `<option value="${escapeAttribute(language.code)}">${escapeHtml(language.autonym)} · ${escapeHtml(language.name)}</option>`).join("")}`;
+    `<option value="${escapeAttribute(language.code)}">${languageFlag(language.code)} ${escapeHtml(language.autonym)} · ${escapeHtml(language.name)}</option>`).join("")}`;
   modelSelect.value = String(state.detail.runIndex);
   languageSelect.value = state.detail.language;
   domainSelect.value = state.detail.domain;
@@ -309,7 +318,7 @@ function renderLanguageSummary(run) {
   const catalogLanguage = state.catalog?.suite?.languages?.find(candidate => candidate.code === state.detail.language);
   const languageResult = (run.summary?.languages || []).find(candidate => candidate.id === state.detail.language);
   const interval = Array.isArray(languageResult?.ci95) ? `${percent(languageResult.ci95[0])}–${percent(languageResult.ci95[1])}` : "not available";
-  summary.innerHTML = `<div class="selected-language-name"><span>SELECTED LANGUAGE</span><strong>${escapeHtml(catalogLanguage?.autonym || state.detail.language.toUpperCase())}</strong><small>${escapeHtml(catalogLanguage?.name || state.detail.language.toUpperCase())} · ${escapeHtml(state.detail.language.toUpperCase())}</small></div>
+  summary.innerHTML = `<div class="selected-language-name"><span>SELECTED LANGUAGE</span><strong><i class="language-flag" aria-hidden="true">${languageFlag(state.detail.language)}</i>${escapeHtml(catalogLanguage?.autonym || state.detail.language.toUpperCase())}</strong><small>${escapeHtml(catalogLanguage?.name || state.detail.language.toUpperCase())} · ${escapeHtml(state.detail.language.toUpperCase())}</small></div>
     <div><span>LANGUAGE SCORE</span><strong>${percent(languageResult?.score)}</strong><small>${languageResult?.n || 0} scored items · 95% CI ${escapeHtml(interval)}</small></div>
     <div><span>PASS RATE</span><strong>${percent(languageResult?.pass_rate)}</strong><small>items meeting their declared threshold</small></div>`;
 }
