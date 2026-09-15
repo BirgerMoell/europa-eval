@@ -120,6 +120,11 @@ europa run \
   --output results/runs/checkpoint.json
 ```
 
+Use `--dtype bfloat16` to explicitly cast a float32 checkpoint for a smaller
+inference footprint, and `--use-cache` to explicitly enable the inference KV
+cache if the training config disabled it. Both settings are recorded in the
+run protocol; the cast run is not native-float32 evaluation.
+
 ## Reasoning is a protocol, not a model label
 
 Ollama thinking is disabled by default. To run a reasoning-enabled protocol, declare it explicitly and give it a separate allowance:
