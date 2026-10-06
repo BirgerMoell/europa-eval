@@ -8,6 +8,7 @@ from europa_eval.backends import (
     HuggingFaceBackend,
     OllamaBackend,
     OpenAICompatibleBackend,
+    _terminal_eos_id,
 )
 from europa_eval.data import load_suite
 
@@ -100,6 +101,7 @@ class BackendTests(unittest.TestCase):
             backend.protocol_settings(),
             {
                 "think": False,
+                "strip_terminal_eos": True,
                 "device": "mps",
                 "resolved_device": "mps:0",
                 "torch_dtype": "bfloat16",
@@ -107,6 +109,11 @@ class BackendTests(unittest.TestCase):
                 "use_cache": True,
             },
         )
+
+    def test_huggingface_decoding_excludes_non_special_terminal_eos(self):
+        self.assertEqual(_terminal_eos_id([101, 102, 4], [262145, 4, 2]), 4)
+        self.assertIsNone(_terminal_eos_id([101, 102], [262145, 4, 2]))
+        self.assertEqual(_terminal_eos_id([101, 2], 2), 2)
 
     def test_openai_compatible_backend_uses_chat_contract(self):
         old_key = os.environ.get("EUROPA_TEST_KEY")
