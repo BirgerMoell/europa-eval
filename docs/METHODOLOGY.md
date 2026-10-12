@@ -78,6 +78,8 @@ For every run EUROPA reports:
 
 Small-sample intervals are descriptive, not a claim of population representativeness. Scores from different suite versions, judges, reasoning modes or decoding protocols should not be compared as if only the checkpoint changed.
 
+The current audit against the independent EuroEval benchmark, including matching rules and why no cross-benchmark correlation is yet estimable, is documented in [Benchmark comparison](BENCHMARK_COMPARISON.md).
+
 ## Reasoning protocol
 
 Reasoning is controlled run metadata. Ollama thinking is off unless explicitly enabled. A reasoning allowance is added separately from the item’s answer budget. Reasoning-on and reasoning-off runs are separate artifacts.

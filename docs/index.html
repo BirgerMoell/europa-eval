@@ -17,7 +17,7 @@
     <meta name="twitter:description" content="An open, inspectable multilingual evaluation for API and local language models.">
     <meta name="twitter:image" content="https://birgermoell.github.io/europa-eval/og.png">
     <link rel="canonical" href="https://birgermoell.github.io/europa-eval/">
-    <link rel="stylesheet" href="styles.css?v=20260903-3">
+    <link rel="stylesheet" href="styles.css?v=20261012-1">
     <title>EUROPA Eval — 36 languages, one capability protocol</title>
   </head>
   <body>
@@ -33,6 +33,7 @@
         <a href="#method">Method</a>
         <a href="#run">Run it</a>
         <a href="#results">Results</a>
+        <a href="#external-check">Compared with EuroEval</a>
       </nav>
       <a class="nav-cta" href="https://github.com/BirgerMoell/europa-eval">GitHub <span aria-hidden="true">↗</span></a>
     </header>
@@ -197,8 +198,47 @@ europa run \
         </div>
       </section>
 
+      <section class="section external-section" id="external-check">
+        <div class="section-heading">
+          <p class="kicker">06 / EXTERNAL CHECK</p>
+          <div>
+            <h2>How does this compare<br>with EuroEval?</h2>
+            <p>EUROPA Eval is a small, zero-shot probe of post-training capabilities across the 36 OpenEuroLLM languages. <a href="https://euroeval.com/leaderboards/european">EuroEval</a> tests a broader set of European-language tasks and reports a within-leaderboard rank score. The two scores measure different things; neither is a percentage translation of the other.</p>
+          </div>
+        </div>
+        <div class="external-layout">
+          <div class="external-comparison">
+            <div class="external-counts" aria-label="Cross-benchmark overlap as of 12 October 2026">
+              <div><strong>8</strong><span>EUROPA model runs checked</span></div>
+              <div><strong>1</strong><span>same model ID found</span></div>
+              <div><strong>0</strong><span>weight revisions confirmed</span></div>
+            </div>
+            <div class="external-table-wrap">
+              <table class="external-table">
+                <caption>Public European all-models leaderboard cross-check · 12 October 2026</caption>
+                <thead><tr><th scope="col">EUROPA run</th><th scope="col">EUROPA pilot</th><th scope="col">EuroEval evidence</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">Apertus-8B-Instruct-2509</th><td>57.3%</td><td>Same model ID; scores for 13 languages, but no European aggregate or confirmed weight revision.</td></tr>
+                  <tr><th scope="row">gemma4:31b</th><td>77.3%</td><td>Related <a href="https://euroeval.com/leaderboards/european">google/gemma-4-31B-it</a> validation entry: rank score 1.65 ± 0.12. Ollama weights and protocol not verified as equivalent.</td></tr>
+                  <tr><th scope="row">gemma4:e2b</th><td>64.6%</td><td>Related google/gemma-4-E2B-it validation entry: rank score 2.91 ± 0.14. Not an exact checkpoint match.</td></tr>
+                  <tr><th scope="row">Other five runs</th><td>—</td><td>No same-ID entry found in the European table; excluded from comparison.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="external-note">EuroEval rank scores are lower-is-better and depend on the models and tasks in that leaderboard. EUROPA percentages are item scores from a public, mostly machine-translated pilot. Do not subtract or directly correlate these columns.</p>
+          </div>
+          <aside class="external-verdict">
+            <p class="small-label">CORRELATION STATUS</p>
+            <h3>Not estimable yet.</h3>
+            <p>One same-ID model—and no revision-confirmed match—is not a sample of checkpoints. EuroEval’s generative runs are usually few-shot; EUROPA’s runs are zero-shot. A coefficient here would imply validation we do not have.</p>
+            <p>The useful next test is to run several <em>exact, revision-pinned</em> EuroEval-listed instruction checkpoints through EUROPA, then compare matched language and task slices with uncertainty intervals.</p>
+            <a href="https://github.com/BirgerMoell/europa-eval/blob/main/docs/BENCHMARK_COMPARISON.md">Matching rules and source snapshot <span aria-hidden="true">→</span></a>
+          </aside>
+        </div>
+      </section>
+
       <section class="section ecosystem-section" id="ecosystem">
-        <div class="section-heading"><p class="kicker">06 / ECOSYSTEM</p><div><h2>Built with the ecosystem.</h2><p>EUROPA adds a small, inspectable cross-language capability layer. It complements deeper native datasets and OpenEuroLLM’s established evaluation infrastructure.</p></div></div>
+        <div class="section-heading"><p class="kicker">07 / ECOSYSTEM</p><div><h2>Built with the ecosystem.</h2><p>EUROPA adds a small, inspectable cross-language capability layer. It complements deeper native datasets and OpenEuroLLM’s established evaluation infrastructure.</p></div></div>
         <div class="integration-list" id="integration-list"><a href="https://github.com/OpenEuroLLM"><span>01</span><strong>OpenEuroLLM</strong><p>Open multilingual foundation models for Europe</p><i>↗</i></a></div>
       </section>
 
