@@ -221,11 +221,12 @@ europa run \
                   <tr><th scope="row">Apertus-8B-Instruct-2509</th><td>57.3%</td><td>Same model ID; scores for 13 languages, but no European aggregate or confirmed weight revision.</td></tr>
                   <tr><th scope="row">gemma4:31b</th><td>77.3%</td><td>Related <a href="https://euroeval.com/leaderboards/european">google/gemma-4-31B-it</a> validation entry: rank score 1.65 ± 0.12. Ollama weights and protocol not verified as equivalent.</td></tr>
                   <tr><th scope="row">gemma4:e2b</th><td>64.6%</td><td>Related google/gemma-4-E2B-it validation entry: rank score 2.91 ± 0.14. Not an exact checkpoint match.</td></tr>
-                  <tr><th scope="row">Other five runs</th><td>—</td><td>No same-ID entry found in the European table; excluded from comparison.</td></tr>
+                  <tr><th scope="row">qwen3.6:35b-a3b</th><td>88.1%</td><td>Different-generation Qwen3.5-35B-A3B-FP8 validation entry: rank score 1.63 ± 0.12. Context only, not a checkpoint match.</td></tr>
+                  <tr><th scope="row">Other four runs</th><td>—</td><td>No same-ID entry found in the European table; excluded from comparison.</td></tr>
                 </tbody>
               </table>
             </div>
-            <p class="external-note">EuroEval rank scores are lower-is-better and depend on the models and tasks in that leaderboard. EUROPA percentages are item scores from a public, mostly machine-translated pilot. Do not subtract or directly correlate these columns.</p>
+            <p class="external-note">EuroEval rank scores are lower-is-better and depend on the models and tasks in that leaderboard. EUROPA percentages are item scores from a public, mostly machine-translated pilot. Do not subtract these columns.</p>
           </div>
           <aside class="external-verdict">
             <p class="small-label">CORRELATION STATUS</p>
@@ -234,6 +235,10 @@ europa run \
             <p>The useful next test is to run several <em>exact, revision-pinned</em> EuroEval-listed instruction checkpoints through EUROPA, then compare matched language and task slices with uncertainty intervals.</p>
             <a href="https://github.com/BirgerMoell/europa-eval/blob/main/docs/BENCHMARK_COMPARISON.md">Matching rules and source snapshot <span aria-hidden="true">→</span></a>
           </aside>
+        </div>
+        <div class="external-pattern">
+          <div><p class="small-label">WHAT THE EXISTING RUNS SUGGEST</p><strong>31 / 36</strong><span>matching pairwise orderings</span></div>
+          <p>In the 12 languages shared by Apertus and the two Gemma entries, their relative order agrees in 31 of 36 model-pair checks. Gemma 31B leads both alternatives in every shared language; Apertus and Gemma E2B reverse order in five. For example, EUROPA favors E2B in Estonian (56.8% vs 54.7%), while EuroEval favors Apertus (rank score 3.19 vs 3.79). These are <strong>model-family comparisons</strong>, not identical checkpoints or independent observations. Qwen3.6 is excluded because EuroEval's Qwen3.5 entry is a different model generation.</p>
         </div>
       </section>
 
