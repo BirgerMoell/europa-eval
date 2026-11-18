@@ -1,0 +1,16 @@
+\begin{tabular}{lrrcrrrrrrlrr}
+\toprule
+Model & $n$ & Score & 95\% CI & Pass\% & \rotatebox{90}{Language understanding} & \rotatebox{90}{Quantitative reasoning} & \rotatebox{90}{Grounding \& safety} & \rotatebox{90}{Digital agency} & \rotatebox{90}{Practical communication} & Weakest language & Malf. & Trunc. \\
+\midrule
+OELLM SFT (T\"ulu/EuroBlocks) & 432 & 0.466 & [0.428, 0.500] & 38.2 & 0.63 & 0.07 & 0.46 & 0.48 & 0.75 & Georgian (0.07) & 112 & 96 \\
+Third-party ckpt-4000 & 432 & 0.573 & [0.536, 0.601] & 48.1 & 0.79 & 0.25 & 0.91 & 0.15 & 0.81 & Georgian (0.05) & 150 & 31 \\
+Stage-1 SFT$^\dagger$ & 431 & 0.600 & [0.546, 0.646] & 49.0 & 0.76 & 0.15 & 0.56 & 0.73 & 0.75 & Georgian (0.05) & 120 & 104 \\
+Dolci SFT & 432 & 0.762 & [0.719, 0.795] & 71.3 & 0.79 & 0.38 & 0.87 & 0.86 & 0.82 & Georgian (0.20) & 38 & 24 \\
+Dolci SFT + DPO & 432 & 0.840 & [0.798, 0.873] & 81.0 & 0.94 & 0.51 & 0.92 & 0.88 & 0.85 & Georgian (0.28) & 9 & 12 \\
+\midrule
+Apertus-8B-Instruct & 432 & 0.573 & [0.548, 0.599] & 50.9 & 0.87 & 0.02 & 0.70 & 0.44 & 0.82 & Maltese (0.40) & 116 & 89 \\
+Gemma 4 E2B & 432 & 0.646 & [0.619, 0.672] & 61.6 & 0.88 & 0.27 & 0.89 & 0.33 & 0.90 & Irish (0.39) & 81 & 10 \\
+Gemma 4 31B$^\ddagger$ & 432 & 0.773 & [0.760, 0.785] & 72.2 & 0.97 & 0.81 & 0.93 & 0.33 & 0.96 & Maltese (0.64) & 75 & 2 \\
+Qwen3.6-35B-A3B & 432 & 0.881 & [0.857, 0.903] & 85.6 & 0.98 & 0.49 & 0.98 & 0.94 & 0.90 & Maltese (0.62) & 5 & 32 \\
+\bottomrule
+\end{tabular}

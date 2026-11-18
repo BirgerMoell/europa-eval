@@ -1,0 +1,16 @@
+{
+  "title": "EUROPA Eval: A Parallel, Inspectable Capability Benchmark for Post-Training in 36 European Languages",
+  "upload_type": "publication",
+  "publication_type": "technicalnote",
+  "description": "<p>Technical report, code, benchmark items and run artifacts for EUROPA Eval, an open multilingual capability benchmark for post-trained language models. It applies the same 12 task templates (reading, arithmetic, grounded answering and calibrated abstention, structured JSON, exact instruction following, tool-error recovery, a defined text calculation, summarization, translation, harmful-request refusal and revision tracking) to each of the 36 languages prioritized by OpenEuroLLM (432 items), with strict deterministic scoring and a pinned LLM judge. The report evaluates nine models, including five post-training variants of one 9B OpenEuroLLM base. The PDF is in paper/europa-eval.pdf.</p>",
+  "creators": [
+    {"name": "Moëll, Birger", "affiliation": "AI Sweden"}
+  ],
+  "keywords": ["LLM evaluation", "multilingual evaluation", "European languages", "post-training", "instruction following", "structured output", "DPO", "OpenEuroLLM"],
+  "license": "apache-2.0",
+  "language": "eng",
+  "related_identifiers": [
+    {"identifier": "https://birgermoell.github.io/europa-eval/paper/", "relation": "isDocumentedBy", "resource_type": "publication-technicalnote"},
+    {"identifier": "10.5281/zenodo.24338447", "relation": "references", "resource_type": "publication-technicalnote"}
+  ]
+}

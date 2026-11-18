@@ -2,7 +2,7 @@
 
 **One transparent capability protocol across the 36 languages prioritized by OpenEuroLLM.**
 
-[Project site](https://birgermoell.github.io/europa-eval/) · [Methodology](docs/METHODOLOGY.md) · [Sources](docs/SOURCES.md) · [Contributing](CONTRIBUTING.md)
+[Project site](https://birgermoell.github.io/europa-eval/) · [Paper](https://birgermoell.github.io/europa-eval/paper/) · [Methodology](docs/METHODOLOGY.md) · [Sources](docs/SOURCES.md) · [Contributing](CONTRIBUTING.md)
 
 EUROPA Eval is a lightweight, inspectable LLM evaluation harness for hosted APIs, local Ollama models and direct Hugging Face Transformers inference. Its public pilot applies the same 12 semantic task templates to every target language: 432 items across 36 languages.
 
@@ -182,9 +182,28 @@ python3 -m compileall -q src
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the native-review workflow and result submission requirements.
 
+## Paper
+
+The technical report *EUROPA Eval: A Parallel, Inspectable Capability Benchmark for Post-Training in 36 European Languages* describes the benchmark and analyses nine models ([PDF](https://birgermoell.github.io/europa-eval/paper/europa-eval.pdf); LaTeX source and the analysis script that produces every number are in [`paper/`](paper/)).
+
 ## License and citation
 
 Code is Apache-2.0. Original pilot items are CC0-1.0. External resources keep their own licenses and are linked rather than repackaged.
+
+Please cite the report when you use the benchmark or its results:
+
+```bibtex
+@techreport{moell2026europaevalpaper,
+  author      = {Mo\"ell, Birger},
+  title       = {{EUROPA} Eval: A Parallel, Inspectable Capability Benchmark for Post-Training in 36 European Languages},
+  institution = {AI Sweden},
+  type        = {Technical Report},
+  year        = {2026},
+  url         = {https://birgermoell.github.io/europa-eval/paper/}
+}
+```
+
+The software can be cited as:
 
 ```bibtex
 @software{moell2026europaeval,

@@ -11,3 +11,9 @@ results/runs/*.manifest.json
 results/runs/*.samples.jsonl
 .env
 .DS_Store
+
+# LaTeX build byproducts
+paper/*.log
+paper/*.blg
+paper/*.aux
+paper/*.bbl

@@ -1,0 +1,15 @@
+\begin{tabular}{lllllr}
+\toprule
+Run & Model ID & Revision & Backend & Precision & Date \\
+\midrule
+OELLM SFT (T\"ulu/EuroBlocks) & \texttt{openeurollm/oellm-9b-256k-sft} & \texttt{aa328efb89} & huggingface & bfloat16 & 2026-09-03 \\
+Third-party ckpt-4000 & \texttt{nicher92/long-ctx-checkpoint-4000} & \texttt{5050b53ab3} & huggingface & bfloat16 & 2026-09-15 \\
+Stage-1 SFT$^\dagger$ & \texttt{birgermoell/oellm-9b-256k-stage1-instruct-v1} & \texttt{58e42ab4e0} & huggingface & bfloat16 & 2026-10-21 \\
+Dolci SFT & \texttt{Neonkraft/oellm-9b-256k-theta64m-prelude-anneal300b-instruct-sft} & \texttt{85bf18fb4f} & huggingface & bfloat16 & 2026-09-14 \\
+Dolci SFT + DPO & \texttt{birgermoell/oellm-9b-threeway-dpo-full-v1} & \texttt{c8d1ca3d96} & huggingface & bfloat16 & 2026-10-06 \\
+Apertus-8B-Instruct & \texttt{swiss-ai/Apertus-8B-Instruct-2509} & \texttt{b946d40447} & huggingface & bfloat16 & 2026-09-03 \\
+Gemma 4 E2B & \texttt{gemma4:e2b} & \texttt{7fbdbf8f5e} & ollama & Q4\_K\_M & 2026-09-03 \\
+Gemma 4 31B$^\ddagger$ & \texttt{gemma4:31b} & \texttt{6316f06291} & ollama & Q4\_K\_M & 2026-09-03 \\
+Qwen3.6-35B-A3B & \texttt{qwen3.6:35b-a3b} & \texttt{07d3521259} & ollama & Q4\_K\_M & 2026-09-03 \\
+\bottomrule
+\end{tabular}

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EUROPA Eval: A Parallel, Inspectable Capability Benchmark for Post-Training in 36 European Languages</title>
+    <meta name="description" content="Technical report describing EUROPA Eval, an open capability benchmark for post-trained language models: 12 parallel task templates in 36 European languages (432 items), with results for nine models including five post-training variants of a 9B OpenEuroLLM model.">
+
+    <!-- Highwire Press tags for Google Scholar indexing -->
+    <meta name="citation_title" content="EUROPA Eval: A Parallel, Inspectable Capability Benchmark for Post-Training in 36 European Languages">
+    <meta name="citation_author" content="Moëll, Birger">
+    <meta name="citation_author_institution" content="AI Sweden">
+    <meta name="citation_publication_date" content="2026/11/18">
+    <meta name="citation_online_date" content="2026/11/18">
+    <meta name="citation_technical_report_institution" content="AI Sweden">
+    <meta name="citation_technical_report_number" content="EUROPA-Eval-2026-1">
+    <meta name="citation_language" content="en">
+    <meta name="citation_keywords" content="LLM evaluation; multilingual evaluation; European languages; post-training; instruction following; structured output; DPO; OpenEuroLLM">
+    <meta name="citation_pdf_url" content="https://birgermoell.github.io/europa-eval/paper/europa-eval.pdf">
+    <meta name="citation_abstract_html_url" content="https://birgermoell.github.io/europa-eval/paper/">
+    <!-- Dublin Core -->
+    <meta name="DC.title" content="EUROPA Eval: A Parallel, Inspectable Capability Benchmark for Post-Training in 36 European Languages">
+    <meta name="DC.creator" content="Moëll, Birger">
+    <meta name="DC.date" content="2026-11-18">
+    <meta name="DC.type" content="Text.Report">
+
+    <link rel="canonical" href="https://birgermoell.github.io/europa-eval/paper/">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <style>
+      :root { --ink:#101925; --paper:#f6f3ea; --blue:#0a2e63; --muted:#5b636c; --line:#c9c5ba; --code:#ece8dc; }
+      @media (prefers-color-scheme: dark) {
+        :root { --ink:#e9e6dd; --paper:#121820; --blue:#9cc2ff; --muted:#a3abb4; --line:#3a4350; --code:#1c242e; }
+      }
+      * { box-sizing: border-box; }
+      body { margin:0; background:var(--paper); color:var(--ink); font-family: Georgia, "Times New Roman", serif; line-height:1.6; }
+      main { max-width: 760px; margin: 0 auto; padding: 40px 16px 80px; }
+      .kicker { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 13px; letter-spacing:.08em; text-transform: uppercase; color: var(--muted); }
+      .kicker a { color: inherit; }
+      h1 { font-size: clamp(26px, 5vw, 38px); line-height:1.15; margin: 10px 0 14px; color: var(--blue); }
+      .authors { font-size: 18px; margin: 0; }
+      .meta { font-family: ui-sans-serif, system-ui, sans-serif; color: var(--muted); font-size: 14px; margin: 4px 0 24px; }
+      .actions { display:flex; flex-wrap:wrap; gap:10px; margin-bottom: 28px; font-family: ui-sans-serif, system-ui, sans-serif; }
+      .actions a { display:inline-block; padding: 9px 14px; border:1px solid var(--ink); text-decoration:none; color: var(--ink); font-weight:600; font-size:14px; }
+      .actions a.primary { background: var(--blue); border-color: var(--blue); color: var(--paper); }
+      h2 { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 15px; letter-spacing:.06em; text-transform: uppercase; margin-top: 36px; border-top:1px solid var(--line); padding-top: 18px; }
+      ul { padding-left: 20px; }
+      pre { background: var(--code); padding: 14px; overflow-x: auto; font-size: 13px; line-height:1.45; white-space: pre; }
+      .copy { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 13px; padding: 6px 10px; border:1px solid var(--line); background: transparent; color: var(--ink); cursor:pointer; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="kicker"><a href="../">EUROPA Eval</a> · Technical report</p>
+      <h1>EUROPA Eval: A Parallel, Inspectable Capability Benchmark for Post-Training in 36 European Languages</h1>
+      <p class="authors">Birger Moëll</p>
+      <p class="meta">AI Sweden · November 2026 · Version 1.0</p>
+
+      <div class="actions">
+        <a class="primary" href="europa-eval.pdf">PDF</a>
+        <a href="https://github.com/BirgerMoell/europa-eval">Code &amp; data</a>
+        <a href="../#results">Answer explorer</a>
+        <a href="#cite">Cite</a>
+      </div>
+
+      <h2>Abstract</h2>
+      <p>Post-training decides whether a multilingual base model becomes a usable assistant, yet the behaviours post-training is meant to install—answering in the requested format, stopping, grounding answers in context, abstaining when evidence is missing, recovering from tool errors, refusing harmful requests—are rarely measured in parallel across many European languages. We present EUROPA Eval, an open, lightweight benchmark and harness that applies the same 12 task templates to each of the 36 languages prioritized by OpenEuroLLM (432 items), scores 9 templates deterministically under strict output contracts and 3 with a pinned LLM judge, and publishes every answer with its scorer evidence. We evaluate 9 models: five post-training variants of one 9B-parameter OpenEuroLLM base and four open reference models. Four findings stand out. (1) The SFT mixture dominates: two SFT runs from the same base differ by +0.297 (95% CI +0.267 to +0.327). (2) Strict output contracts are a measured capability, not noise: re-scoring the same answers for content alone moves one checkpoint by 0.218 and changes which model ranks first; most of DPO's gain on multiple-choice reading (+0.38) is format compliance (+0.03 on content). (3) DPO on preference data in 12 languages improved the 23 languages it never saw as much as the 12 it did (+0.075 vs +0.083, p = 0.68). (4) Averaging rubric dimensions lets unsafe answers keep credit: 107 responses the judge rated fully unsafe still received a mean item score of 0.300. A ranking from one language agrees with the 36-language ranking only partially (mean Kendall τ = 0.80; English alone τ = 0.79). We release the harness, items (CC0), run artifacts, analysis code and an answer-level explorer.</p>
+
+      <h2>Key results</h2>
+      <ul>
+        <li>Five post-training variants of one 9B OpenEuroLLM base span 0.466 to 0.840; the SFT mixture alone accounts for +0.297.</li>
+        <li>Strict output contracts change rankings: content-only re-scoring moves one checkpoint by 0.218, and most of DPO's reading gain (+0.38) is format (+0.03 on content).</li>
+        <li>DPO with preference data in 12 languages improved the 23 unseen languages as much (+0.075 vs +0.083, p = 0.68).</li>
+        <li>107 answers the judge rated fully unsafe still kept a mean item score of 0.300 under averaged rubrics.</li>
+        <li>A single language reproduces the 36-language ranking only partially (mean Kendall τ = 0.80; English alone 0.79).</li>
+      </ul>
+
+      <h2 id="cite">Cite</h2>
+      <p>If you use EUROPA Eval or its results, please cite the report:</p>
+      <pre id="bibtex">@techreport{moell2026europaevalpaper,
+  author      = {Mo{\"e}ll, Birger},
+  title       = {{EUROPA} Eval: A Parallel, Inspectable Capability Benchmark
+                 for Post-Training in 36 European Languages},
+  institution = {AI Sweden},
+  type        = {Technical Report},
+  year        = {2026},
+  month       = nov,
+  url         = {https://birgermoell.github.io/europa-eval/paper/}
+}</pre>
+      <button class="copy" type="button" onclick="navigator.clipboard &amp;&amp; navigator.clipboard.writeText(document.getElementById('bibtex').innerText).then(()=>{this.textContent='Copied'})">Copy BibTeX</button>
+    </main>
+  </body>
+</html>
