@@ -2,6 +2,8 @@
 
 **One transparent capability protocol across the 36 languages prioritized by OpenEuroLLM.**
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24339071.svg)](https://doi.org/10.5281/zenodo.24339071)
+
 [Project site](https://birgermoell.github.io/europa-eval/) · [Paper](https://birgermoell.github.io/europa-eval/paper/) · [Methodology](docs/METHODOLOGY.md) · [Sources](docs/SOURCES.md) · [Contributing](CONTRIBUTING.md)
 
 EUROPA Eval is a lightweight, inspectable LLM evaluation harness for hosted APIs, local Ollama models and direct Hugging Face Transformers inference. Its public pilot applies the same 12 semantic task templates to every target language: 432 items across 36 languages.
@@ -199,6 +201,7 @@ Please cite the report when you use the benchmark or its results:
   institution = {AI Sweden},
   type        = {Technical Report},
   year        = {2026},
+  doi         = {10.5281/zenodo.24339071},
   url         = {https://birgermoell.github.io/europa-eval/paper/}
 }
 ```
